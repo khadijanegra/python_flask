@@ -3,3 +3,4 @@ pandas
 scikit-surprise
 flask
 gunicorn
+scikit-learn
