@@ -1,11 +1,7 @@
-from flask import Flask, request, jsonify
-from recommandation import recommander_shops_svd, algo, favoris_df
-
-app = Flask(__name__)
-
 @app.route("/recommander", methods=["GET"])
 def recommander():
     user_id = request.args.get("user_id")
+    print(f"user_id reçu : {user_id}")  # pour confirmer que tu reçois bien le paramètre
     if not user_id:
         return jsonify({"error": "user_id manquant"}), 400
 
@@ -13,7 +9,7 @@ def recommander():
         recommandations = recommander_shops_svd(algo, user_id, favoris_df, n=5)
         return jsonify({"user_id": user_id, "recommandations": recommandations})
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-if __name__ == "__main__":
-    app.run(port=5001)
+        # Affiche l’erreur complète dans les logs Flask
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": f"Exception : {str(e)}"}), 500
