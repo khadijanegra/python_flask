@@ -90,10 +90,8 @@ predictions = algo.test(testset)
 
 # 🟢 Étape 6 : évaluer la performance (RMSE)
 rmse = accuracy.rmse(predictions)
-def recommander_shops_svd(algo, user_id, favoris_df, n=5):
-    if user_id not in favoris_df.index:
-        raise ValueError(f"user_id '{user_id}' introuvable dans les données")
 
+def recommander_shops_svd(algo, user_id, favoris_df, n=5):
     shops_aimés = set(favoris_df.loc[user_id][favoris_df.loc[user_id] == 1].index)
     tous_les_shops = set(favoris_df.columns)
     shops_à_prédire = list(tous_les_shops - shops_aimés)
@@ -107,3 +105,5 @@ def recommander_shops_svd(algo, user_id, favoris_df, n=5):
         print(f" - {shop_id}")
 
     return top_shops
+liste = recommander_shops_svd(algo, "67f1791bd4b37eec7256fe0a", favoris_df)
+
