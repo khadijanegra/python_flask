@@ -1,5 +1,2 @@
 flask
-pandas
-scikit-surprise
-flask
 gunicorn
