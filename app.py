@@ -18,10 +18,10 @@ def recommander():
     except ValueError as ve:
         return jsonify({"error": str(ve)}), 404
 
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({"error": f"Exception : {str(e)}"}), 500
+  except Exception as e:
+    import traceback
+    traceback.print_exc()
+    return jsonify({"error": f"Erreur depuis le serveur Flask : {str(e)}"}), 500
 
 @app.route("/utilisateurs", methods=["GET"])
 def utilisateurs_valides():
