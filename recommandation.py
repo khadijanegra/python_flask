@@ -1,11 +1,11 @@
+import os
 import pandas as pd
 
-# Charger le fichier users.csv
-users_path = "/home/ordione/Téléchargements/test.users_ahawa.csv"
+# Chemin relatif basé sur le répertoire actuel
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+users_path = os.path.join(BASE_DIR, "data", "test.users_ahawa.csv")
+
 users_df = pd.read_csv(users_path)
-
-# Afficher les premières lignes pour analyse
-
 # ✅ Vérification des données manquantes
 print("🔍 Données manquantes par colonne :")
 print(users_df.isnull().sum())
