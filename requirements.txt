@@ -5,3 +5,4 @@ scikit-surprise
 flask
 gunicorn
 flask-cors
+pymongo
